@@ -5,7 +5,6 @@ public class RPN{
 	public RPN(String args) {
 
 		ArrayStack stack = new ArrayStack(args.length());
-
 		
 		for (int i = 0; i < args.length(); i++) {
 			char input = args.charAt(i);
@@ -40,6 +39,7 @@ public class RPN{
 			z = x / y;
 		return z;
 	}
+
 
 	public static void transform(String s){
 		ArrayStack stack = new ArrayStack();
