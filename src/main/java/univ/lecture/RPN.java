@@ -10,11 +10,11 @@ public class RPN{
 	private static double evaluate(double x, double y, String op) {
 		double z = 0;
 
-		if (op.equals("+"))
+		if ("+".equals(op))
 			z = x + y;
-		else if (op.equals("-"))
+		else if ("-".equals(op))
 			z = x - y;
-		else if (op.equals("*"))
+		else if ("*".equals(op))
 			z = x * y;
 		else
 			z = x / y;
