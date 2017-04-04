@@ -1,3 +1,4 @@
+package univ.lecture;
 /**
  * Created by tchi on 2017. 3. 19..
  */
