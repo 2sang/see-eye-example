@@ -48,7 +48,7 @@ public class RPN{
 	private static String[] infixToPostfix(String infix){
 		Stack<Object> stack = new Stack<>();
 		
-		String tempPostfix = new String();
+		String tempPostfix = "";
 		int count = 0;
 		String[] changedArgs = infix.split("(?<=[\\(\\)\\+\\-*\\/\\^A-Za-z])|(?=[\\(\\)\\+\\-*\\/\\^A-Za-z])");
 		
