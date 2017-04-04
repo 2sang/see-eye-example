@@ -1,11 +1,16 @@
 
 public class ArrayStack {
 	
+	static final int MAX_CAPACITY = 1000;
 	static String EMPTY_MESSAGE = "stack is empty";
 	
 	private Object[] a;
 	private int size;
 	
+	public ArrayStack(){
+		a = new Object[MAX_CAPACITY];
+	}
+
 	public ArrayStack(int capacity) {
 		a = new Object[capacity];
 	}
