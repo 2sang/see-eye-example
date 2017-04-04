@@ -1,25 +1,26 @@
-import java.lang.*;
+package univ.lecture;
 import java.util.*;
 
 public class RPN{
 
+	private RPN(){
+	}
+
 	private static boolean isAnOperator(String s) {
-		return (s.length() == 1 && "+-*/".indexOf(s) >= 0);
+		return s.length() == 1 && "+-*/".indexOf(s) >= 0;
 	}
 
 	private static double evaluate(double x, double y, String op) {
-		double z = 0;
-
-		if (op.equals("+"))
-			z = x + y;
-		else if (op.equals("-"))
-			z = x - y;
-		else if (op.equals("*"))
-			z = x * y;
+		double result;
+		if ("+".equals(op))
+			result = x + y;
+		else if ("-".equals(op))
+			result = x - y;
+		else if ("*".equals(op))
+			result = x * y;
 		else
-			z = x / y;
-		
-		return z;
+			result = x / y;
+		return result;
 	}
 
 	public static double calculateExpression(String exp){
@@ -27,7 +28,7 @@ public class RPN{
 	}
 
 	private static double calculatePostFix(String[] args){
-		Stack<Object> stack = new Stack<Object>();
+		Stack<Object> stack = new Stack<>();
 		
 		for (int i = 0; i < args.length; i++) {
 			String input = args[i];
@@ -36,7 +37,7 @@ public class RPN{
 				double y = Double.parseDouble((String) stack.pop());
 				double x = Double.parseDouble((String) stack.pop());
 				double z = evaluate(x, y, input);
-				stack.push("" + z);
+				stack.push(Double.toString(z));
 			} else
 				stack.push(input);
 		}
@@ -45,7 +46,7 @@ public class RPN{
 	}
 	
 	private static String[] infixToPostfix(String infix){
-		Stack<Object> stack = new Stack<Object>();
+		Stack<Object> stack = new Stack<>();
 		
 		String tempPostfix = new String();
 		int count = 0;
@@ -55,7 +56,7 @@ public class RPN{
 			if (precedence(changedArgs[i]) == 3) {
 				stack.push(changedArgs[i]);
 			} else if (precedence(changedArgs[i]) == 9) {
-				while (!stack.peek().equals("(")) {
+				while (!"(".equals(stack.peek())) {
 					tempPostfix += (String) stack.pop() + " ";
 					count++;
 				}
@@ -91,17 +92,15 @@ public class RPN{
 	}
 	
 	private static int precedence(String token) {
-		if (token.equals("+")) {
+		if ("-".equals(token)) {
 			return 5;
-		} else if (token.equals("-")) {
-			return 5;
-		} else if (token.equals("/")) {
+		} else if ("/".equals(token)) {
 			return 7;
-		} else if (token.equals("*")) {
+		} else if ("*".equals(token)) {
 			return 7;
-		} else if (token.equals("(")) {
+		} else if ("(".equals(token)) {
 			return 3;
-		} else if (token.equals(")")) {
+		} else if (")".equals(token)) {
 			return 9;
 		} else
 			return 0;
