@@ -28,7 +28,7 @@ public class RPN{
 	}
 
 	private static double calculatePostFix(String[] args){
-		Deque<Object> stack = new LinkedList();
+		Stack<Object> stack = new Stack<>();
 		
 		for (int i = 0; i < args.length; i++) {
 			String input = args[i];
@@ -46,7 +46,7 @@ public class RPN{
 	}
 	
 	private static String[] infixToPostfix(String infix){
-		Deque<Object> stack = new LinkedList();
+		Stack<Object> stack = new Stack<>();
 		
 		String tempPostfix = new String();
 		int count = 0;
