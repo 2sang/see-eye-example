@@ -82,6 +82,12 @@ public class CalculatorTest {
 	assertThat(output, is(14));
     }
 
+    public void testCalculatorCom9 () {
+	Calculator calc = new Calculator();
+	int output = calc.calculate("10-2-3+2+3");
+	assertThat(output, is(10));
+    }
+
 
 
 
