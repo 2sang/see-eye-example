@@ -13,13 +13,13 @@ public class RPN{
 	private static double evaluate(double x, double y, String op) {
 		double result;
 		if ("+".equals(op))
-			z = x + y;
+			result = x + y;
 		else if ("-".equals(op))
-			z = x - y;
+			result = x - y;
 		else if ("*".equals(op))
-			z = x * y;
+			result = x * y;
 		else
-			z = x / y;
+			result = x / y;
 		return result;
 	}
 
@@ -28,7 +28,7 @@ public class RPN{
 	}
 
 	private static double calculatePostFix(String[] args){
-		Deque<Object> stack = new Deque<>();
+		Deque<Object> stack = new LinkedList();
 		
 		for (int i = 0; i < args.length; i++) {
 			String input = args[i];
@@ -46,7 +46,7 @@ public class RPN{
 	}
 	
 	private static String[] infixToPostfix(String infix){
-		Deque<Object> stack = new Deque<>();
+		Deque<Object> stack = new LinkedList();
 		
 		String tempPostfix = new String();
 		int count = 0;
