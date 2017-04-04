@@ -9,18 +9,18 @@ public class RPN{
 	}
 
 	private static double evaluate(double x, double y, String op) {
-		double z = 0;
+		double result = 0;
 
 		if ("+".equals(op))
-			z = x + y;
+			result = x + y;
 		else if ("-".equals(op))
-			z = x - y;
+			result = x - y;
 		else if ("*".equals(op))
-			z = x * y;
+			result = x * y;
 		else
-			z = x / y;
+			result = x / y;
 		
-		return z;
+		return result;
 	}
 
 	public static double calculateExpression(String exp){
