@@ -12,16 +12,17 @@ public class RPN{
 	}
 
 	private static double evaluate(double x, double y, String op) {
-		double z = 0;
+		double result = 0;
 
 		if ("+".equals(op))
-			z = x + y;
+			result = x + y;
 		else if ("-".equals(op))
-			z = x - y;
+			result = x - y;
 		else if ("*".equals(op))
-			z = x * y;
+			result = x * y;
 		else
 			result = x / y;
+
 		return result;
 	}
 
