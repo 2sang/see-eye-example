@@ -1,42 +1,12 @@
+package univ.lecture;
 import java.lang.*;
+import java.util.*;
 
-public class RPN{
-
-	public RPN(String args) {
-
-
-		ArrayStack stack = new ArrayStack(args.length());
-		
-		String infix;
-		infix = transform(args);
-
-
-		for (int i = 0; i < infix.length(); i++) {
-			char input = infix.charAt(i);
-			int input_int = 0;
-				
-			if (isAnOperator(input)) {
-				int y = (int)stack.pop();
-				int x = (int)stack.pop();
-				int z = evaluate(x, y, input);
-				stack.push(z);
-				}
-			else{
-				input_int = Character.getNumericValue(input); 
-				stack.push(input_int);
-		
-			}
-		}
-		if(stack.isEmpty())
-		System.out.println(
-
-	}
-		
-	private boolean isAnOperator(char s) {
+	private static boolean isAnOperator(char s) {
 		return (s == '+' || s == '-' || s == '*' || s == '/');
 	}
 
-	private int evaluate(int x, int y, char op) {
+	private static int evaluate(int x, int y, char op) {
 		int z = 0;
 		if (op == '+')
 			z = x + y;
@@ -49,12 +19,37 @@ public class RPN{
 		return z;
 	}
 
+	public static int calculateExpression(String exp){
+		return calculatePostFix(infixToPostfix(exp));
+	}
 
-	public static String transform(String s){
-		ArrayStack stack = new ArrayStack();
+	private static int calculatePostFix(String postfix){
 
-		for(int i = 0; i < s.length(); i++){ 
-			char c = s.charAt(i);
+		Stack<Object> stack = new Stack<Object>();
+		for (int i = 0; i < postfix.length(); i++) {
+			char input = postfix.charAt(i);
+			int input_int = 0;
+				
+			if (isAnOperator(input)) {
+				int y = (int)stack.pop();
+				int x = (int)stack.pop();
+				int z = evaluate(x, y, input);
+				stack.push(z);
+			}
+			else{
+				input_int = Character.getNumericValue(input); 
+				stack.push(input_int);
+			}
+		}
+		return 0;
+	}
+		
+	private static String infixToPostfix(String infix){
+		String postfix = "";
+		Stack<Object> stack = new Stack<Object>();
+
+		for(int i = 0; i < infix.length(); i++){ 
+			char c = infix.charAt(i);
 			if(c >= '0' && c <= '9'){ 
 				postfix += c;
 			}
@@ -99,10 +94,10 @@ public class RPN{
 				}
 			}
 		}
-			while( !stack.isEmpty() ){ 
-				postfix += stack.pop();
-			}
-			return postfix;
+		while( !stack.isEmpty() ){ 
+			postfix += stack.pop();
+		}
+		return "";
 	}
 
 }
