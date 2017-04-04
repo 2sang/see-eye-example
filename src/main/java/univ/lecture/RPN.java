@@ -93,15 +93,15 @@ public class RPN{
 	private static int precedence(String token) {
 		if (token.equals("+")) {
 			return 5;
-		} else if "-".equals(token) {
+		} else if ("-".equals(token)) {
 			return 5;
-		} else if "/".equals(token) {
+		} else if ("/".equals(token)) {
 			return 7;
-		} else if "*".equals(token) {
+		} else if ("*".equals(token)) {
 			return 7;
-		} else if "(".equals(token) {
+		} else if ("(".equals(token)) {
 			return 3;
-		} else if ")".equals(token) {
+		} else if (")".equals(token)) {
 			return 9;
 		} else
 			return 0;
