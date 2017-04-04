@@ -1,4 +1,3 @@
-package univ.lecture;
 import java.lang.*;
 import java.util.*;
 
@@ -23,8 +22,8 @@ public class RPN{
 		return z;
 	}
 
-	public static int calculateExpression(String exp){
-		return calculatePostFix(infixToPostfix(exp);
+	public static double calculateExpression(String exp){
+		return calculatePostFix(infixToPostfix(exp));
 	}
 
 	private static double calculatePostFix(String[] args){
@@ -42,15 +41,15 @@ public class RPN{
 				stack.push(input);
 		}
 		
-		return stack.pop();
+		return Double.parseDouble(stack.pop().toString());
 	}
 	
-	private static String[] infixToPostfix(String[] args){
+	private static String[] infixToPostfix(String infix){
 		Stack<Object> stack = new Stack<Object>();
 		
 		String tempPostfix = new String();
 		int count = 0;
-		String[] changedArgs = args[0].split("(?<=[\\(\\)\\+\\-*\\/\\^A-Za-z])|(?=[\\(\\)\\+\\-*\\/\\^A-Za-z])");
+		String[] changedArgs = infix.split("(?<=[\\(\\)\\+\\-*\\/\\^A-Za-z])|(?=[\\(\\)\\+\\-*\\/\\^A-Za-z])");
 		
 		for (int i = 0; i < changedArgs.length; i++) {
 			if (precedence(changedArgs[i]) == 3) {
@@ -88,11 +87,6 @@ public class RPN{
 			j++;
 		}
 
-		System.out.print("Chaned Postfix : ");
-		for (int k = 0; k < postfix.length; k++)
-			System.out.print(postfix[k] + " ");
-		System.out.println();
-
 		return postfix;
 	}
 	
@@ -112,3 +106,4 @@ public class RPN{
 		} else
 			return 0;
 	}
+}

@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-package univ.lecture;
-
 public class Application {
     public Calculator calculator(String[] args) {
         Calculator calc = new Calculator();
