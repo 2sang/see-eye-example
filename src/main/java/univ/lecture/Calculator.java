@@ -5,6 +5,6 @@ package univ.lecture;
  */
 public class Calculator {
     public int calculate(String exp) {
-        return 2;
+        return RPN.calculateExpression(exp);
     }
 }
