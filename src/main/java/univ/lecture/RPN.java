@@ -4,10 +4,15 @@ public class RPN{
 
 	public RPN(String args) {
 
+
 		ArrayStack stack = new ArrayStack(args.length());
 		
-		for (int i = 0; i < args.length(); i++) {
-			char input = args.charAt(i);
+		String infix;
+		infix = transform(args);
+
+
+		for (int i = 0; i < infix.length(); i++) {
+			char input = infix.charAt(i);
 			int input_int = 0;
 				
 			if (isAnOperator(input)) {
@@ -19,8 +24,12 @@ public class RPN{
 			else{
 				input_int = Character.getNumericValue(input); 
 				stack.push(input_int);
-				}
+		
 			}
+		}
+		if(stack.isEmpty())
+		System.out.println(
+
 	}
 		
 	private boolean isAnOperator(char s) {
@@ -41,7 +50,7 @@ public class RPN{
 	}
 
 
-	public static void transform(String s){
+	public static String transform(String s){
 		ArrayStack stack = new ArrayStack();
 
 		for(int i = 0; i < s.length(); i++){ 
@@ -93,7 +102,7 @@ public class RPN{
 			while( !stack.isEmpty() ){ 
 				postfix += stack.pop();
 			}
-			System.out.println(postfix);
+			return postfix;
 	}
 
 }
