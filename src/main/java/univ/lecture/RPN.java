@@ -95,11 +95,9 @@ public class RPN{
 	}
 	
 	private static int precedence(String token) {
-		if ("+".equals(token)) {
+		if ("+".equals(token) || "-".equals(token)) {
 			return 5;
-		} else if ("/".equals(token)) {
-			return 7;
-		} else if ("*".equals(token)) {
+		} else if ("/".equals(token) || "*".equals(token)) {
 			return 7;
 		} else if ("(".equals(token)) {
 			return 3;
