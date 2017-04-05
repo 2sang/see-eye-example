@@ -1,5 +1,4 @@
 package univ.lecture;
-import java.lang.*;
 import java.util.*;
 
 public class RPN{
@@ -12,8 +11,7 @@ public class RPN{
 	}
 
 	private static double evaluate(double x, double y, String op) {
-		double result = 0;
-
+		double result;
 		if ("+".equals(op))
 			result = x + y;
 		else if ("-".equals(op))
